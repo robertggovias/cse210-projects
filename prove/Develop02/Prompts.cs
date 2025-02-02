@@ -1,8 +1,9 @@
+using System;
 public class Prompts{
-    public static string _prompts;
+    public string _prompt;
 
     public Prompts(){
-        
+        _prompt = "How was your day?";
     }
     
 }
