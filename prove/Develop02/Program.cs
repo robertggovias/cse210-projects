@@ -8,7 +8,9 @@ class Program
 {
     static void Main(string[] args)
     {     
-        Journal journal= new Journal();        
+        Journal journal= new Journal();     
+        
+       
         
         /* Prompts prompts= new Prompts();
         Console.WriteLine(prompts._prompt);              

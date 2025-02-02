@@ -4,12 +4,12 @@ public class Entry{
     public string _prompt;
     public string _entry;
     public Entry(){
-        _date = DateTime.Now.ToShortDateString();        
         _entry = Console.ReadLine();
-        
-    /* public void Display(){
-        Console.WriteLine($"{_date}{_prompt}{_entry}");
-    }  */
+        _date = DateTime.Now.ToShortDateString();        
+    }
+    public void Display(){
+        Console.WriteLine($"Date: {_date} - Prompt: {_prompt}\n{_entry}");
+    
     }}
         
         
