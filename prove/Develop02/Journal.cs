@@ -15,11 +15,25 @@ public class Journal {
 {
     entry1.Display();
 } }
+public void DisplayComa() {
+    foreach (Entry entry in _entries)   {
+        
+        entry.DisplayComma();
+    }
 
+ }
+ public void GetEntryList() {
+    foreach (Entry entry in _entries)   {
+       entry.GetEntryListBig();       
+    }
+
+ }
+
+public string _askingFile = "What is the file name?";
     
     
 
-    public static string _menuOptions= "Please select one of the followeing choices: \n 1. Write \n 2. Display \n 3. Load \n 4. Save \n 5. Quit";
+    public static string _menuOptions= "Please select one of the followeing choices: \n 1. Write \n 2. Display unsaverd entries \n 3. Display from file \n 4. Save on file \n 5. Quit";
     
             public static string _menuChoice;
             public int _menuChoiceInt;
@@ -32,30 +46,21 @@ public class Journal {
         
         switch (_menuChoiceInt)
     {
-        case 1:
-        Prompts prompts= new Prompts();
-        Console.WriteLine(prompts._prompt);              
-        Entry Entry1 = new Entry();        
-        /* _entries.Add("salud");
-        _entries.Add("compañia"); */
+        case 1:        
+        Entry Entry1 = new Entry();                
         _entries.Add(Entry1);
-        Console.WriteLine($"Date: {Entry1._date} - Prompt: {prompts._prompt} \n{Entry1._entry} ");
-
-        Entries loadList = new Entries();
-        //loadList._entries.Add(Entry1._entry);
-        //loadList._entries.Add(prompts._prompt);        
+       // Console.WriteLine($"Date: {Entry1._date} - Prompt: {Entry1._prompt} \n{Entry1._entry} ");
         
-
-        //loadList._entries.Add(Entry1._entry);
-        //loadList._entries.Add(prompts._prompt);
-
         break;          
 
         case 2:        
-            Display();        
+            DisplayComa();        
         
-        
-               string fileName = "journal.txt";
+       break;          
+       case 3:
+        Console.WriteLine(_askingFile);
+
+        string fileName = Console.ReadLine();
        string[] lines = System.IO.File.ReadAllLines(fileName);
        //Console.WriteLine(lines);             
 
@@ -66,14 +71,21 @@ public class Journal {
         
         Console.WriteLine($"{firstLine}\n{secondLine}\n");
        }
-       break;          
-       case 3:
-        Console.WriteLine("Load");
         break;          
         case 4:
-        Console.WriteLine("Save");
+        GetEntryList();
+        Console.WriteLine(_askingFile);
+        string newFileName = Console.ReadLine();
+
+        using (StreamWriter writer = new StreamWriter(newFileName)){
+            foreach (Entry entry in _entries){
+            writer.WriteLine($"Date: {entry._date} - Prompt: {entry._prompt},{entry._entry}\n");
+        }}
+
+
         break;          
-        case 5:        
+        case 5:
+        
         Console.WriteLine("Bye, come back soon");
             break;
         
