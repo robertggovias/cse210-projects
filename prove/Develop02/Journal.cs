@@ -28,7 +28,7 @@ public string _askingFile = "What is the file name?";
     
     
 
-    public static string _menuOptions= "Please select one of the followeing choices: \n 1. Write \n 2. Display unsaverd entries \n 3. Display from file \n 4. Save on file \n 5. Quit";
+    public static string _menuOptions= "Please select one of the followeing choices: \n 1. Write \n 2. Display\n 3. Load \n 4. Save \n 5. Quit";
     
             public static string _menuChoice;
             public int _menuChoiceInt;
