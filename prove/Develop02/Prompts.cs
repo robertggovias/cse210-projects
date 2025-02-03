@@ -1,21 +1,14 @@
 using System;
 using System.Security.Cryptography.X509Certificates;
 public class Prompts{
-    public string _prompt = "How do you fell today?";
-    public string _prompt2;
-    public string _prompt3;
-    public string _prompt4;
-    public string _prompt5;    
-
+    public string _prompt = "How do you fell today?";    
     public Prompts(){        
     }
-
     //This codes are hust for testing purposes (to confrm is the list is working, the idea is iterate over all elemments and print the _prompt))
     public void DisplayAPrompt(){
         
         Console.WriteLine(promptList._promptsList);
     }
-
     PromptList promptList= new PromptList();
 
     public void DisplayPrompts() {
@@ -27,7 +20,7 @@ public class Prompts{
     
 }
 
-
+//I really don't know if is necesary to create a new class to make possible to create list that save using the attribute from prompts class
 public class PromptList{
 
     public List<Prompts> _promptsList = new List<Prompts>();    
