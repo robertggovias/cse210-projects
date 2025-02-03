@@ -2,28 +2,29 @@ using System;
 public class Entry{
     public string _date;
 
-    public string _prompt;
+    public string _prompte;
+    Prompts _prompts = new Prompts();
+    
+    /* public void promptador(){
+        public string _prompter = _prompts._prompt;}  */
     public string _entry;
     
-    Prompts _prompts = new Prompts();
-    public Entry(){
-        _prompt = _prompts._prompt;
-        Console.WriteLine(_prompt);
-        _entry = Console.ReadLine();
-        _date = DateTime.Now.ToShortDateString();        
+    
+
+    public Entry(){        
         
     }
     public void Display(){
-        Console.WriteLine($"Date: {_date} - Prompt: {_prompt}\n {_entry}\n");
+        Console.WriteLine($"Date: {_date} - Prompt: {_prompts._prompt}\n{_entry}\n");
     
     }
     public void DisplayComma(){
-        Console.WriteLine($"Date: {_date} - Prompt: {_prompt},{_entry}\n");
+        Console.WriteLine($"Date: {_date} - Prompt: {_prompts._prompt},{_entry}\n");
 
     }
     public string GetEntry;
     public string GetEntryListBig(){
-        return String.Format($"Date: {_date} - Prompt: {_prompt},{_entry}\n");
+        return String.Format($"Date: {_date} - Prompt: {_prompts._prompt},{_entry}\n");
 
     }
         

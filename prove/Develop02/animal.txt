@@ -1,4 +1,2 @@
-Date: 02/02/2025 - Prompt: How was your day?,pato
-
-Date: 02/02/2025 - Prompt: How was your day?,leon
-
+Date: 02/02/2025 - Prompt: How was your day?,fine
+Date: 02/02/2025 - Prompt: How was your day?,better

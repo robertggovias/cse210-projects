@@ -22,12 +22,7 @@ public void DisplayComa() {
     }
 
  }
- public void GetEntryList() {
-    foreach (Entry entry in _entries)   {
-       entry.GetEntryListBig();       
-    }
 
- }
 
 public string _askingFile = "What is the file name?";
     
@@ -46,15 +41,23 @@ public string _askingFile = "What is the file name?";
         
         switch (_menuChoiceInt)
     {
-        case 1:        
-        Entry Entry1 = new Entry();                
+        case 1:       
+        Prompts _prompts = new Prompts(); 
+        Entry Entry1 = new Entry(); 
+        Console.WriteLine(_prompts._prompt);            
+        Entry1._entry = Console.ReadLine();
+        Entry1._date = DateTime.Now.ToShortDateString();        
+
+
+
         _entries.Add(Entry1);
+        
        // Console.WriteLine($"Date: {Entry1._date} - Prompt: {Entry1._prompt} \n{Entry1._entry} ");
         
         break;          
 
         case 2:        
-            DisplayComa();        
+            Display();        
         
        break;          
        case 3:
@@ -66,20 +69,24 @@ public string _askingFile = "What is the file name?";
 
        foreach (string line in lines){
         string[] parts = line.Split(',');
-        string firstLine = parts[0];
-        string secondLine = parts[1];        
+        Entry entryEntry2 = new Entry();
+        entryEntry2._date = parts[0];   
+        entryEntry2._prompte = parts[1];
+        entryEntry2._entry = parts[2];
         
-        Console.WriteLine($"{firstLine}\n{secondLine}\n");
+        _entries.Add(entryEntry2);
+        //Console.WriteLine($"{firstLine}\n{secondLine}\n");
        }
+       Display();
         break;          
         case 4:
-        GetEntryList();
+        
         Console.WriteLine(_askingFile);
         string newFileName = Console.ReadLine();
 
         using (StreamWriter writer = new StreamWriter(newFileName)){
             foreach (Entry entry in _entries){
-            writer.WriteLine($"Date: {entry._date} - Prompt: {entry._prompt},{entry._entry}\n");
+            writer.WriteLine($"{entry._date},{entry._prompte},{entry._entry}");
         }}
 
 
@@ -87,7 +94,12 @@ public string _askingFile = "What is the file name?";
         case 5:
         
         Console.WriteLine("Bye, come back soon");
-            break;
+            break;            
+        case 6:
+        Console.WriteLine("cuan largo la lista"); 
+        Console.WriteLine(_entries.Count);
+        break;
+
         
     }
     }
