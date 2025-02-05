@@ -9,6 +9,7 @@ using System.ComponentModel.DataAnnotations;
 public class Journal {
     
     public List<Entry> _entries = new List<Entry>();
+    public int _index = 0;
 
     public void Display() {
     foreach (Entry entry1 in _entries)
@@ -21,6 +22,13 @@ public void DisplayComa() {
         entry.DisplayComma();
     }
  }
+ static void randomPrompter(){
+    Prompts _prompts = new Prompts(); 
+ _prompts.randomPrompt(); 
+ }
+ 
+ 
+
 
 
 
@@ -29,12 +37,15 @@ public string _askingFile = "What is the file name?";
     
     
 
-    public static string _menuOptions= "Please select one of the followeing choices: \n 1. Write \n 2. Display\n 3. Load \n 4. Save \n 5. Quit";
+    public static string _menuOptions= "Please select one of the following choices: \n 1. Write \n 2. Display\n 3. Load \n 4. Save \n 5. Quit";
     
             public static string _menuChoice;
             public int _menuChoiceInt;
     
     public Journal(){
+        Prompts _prompts = new Prompts(); 
+        _prompts.randomPrompt();        
+        
         do  {
             Console.WriteLine(_menuOptions);        
             Journal._menuChoice=Console.ReadLine();
@@ -42,14 +53,17 @@ public string _askingFile = "What is the file name?";
         
         switch (_menuChoiceInt)
     {
-        case 1:       
-        Prompts _prompts = new Prompts(); 
-        Entry Entry1 = new Entry(); 
+        case 1:
+        _index++;
+        Entry Entry1 = new Entry();         
         //Console.WriteLine(_prompts._prompt);            
-        _prompts.DisplayAPrompt();            
+        //_prompts.DisplayAPrompt();            
+        _prompts._prompt = _prompts._promptsList[_index];
+        Entry1._prompte = _prompts._prompt;
+        Console.WriteLine(Entry1._prompte);
         Entry1._entry = Console.ReadLine();
         Entry1._date = DateTime.Now.ToShortDateString();        
-        Entry1._prompte = _prompts._promptsList[0];
+        
         
         
         _entries.Add(Entry1);
