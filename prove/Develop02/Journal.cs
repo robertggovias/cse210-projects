@@ -46,10 +46,10 @@ public string _askingFile = "What is the file name?";
         Prompts _prompts = new Prompts(); 
         Entry Entry1 = new Entry(); 
         //Console.WriteLine(_prompts._prompt);            
-        _prompts.DisplayAPrompt();        
+        _prompts.DisplayAPrompt();            
         Entry1._entry = Console.ReadLine();
         Entry1._date = DateTime.Now.ToShortDateString();        
-        Entry1._prompte = _prompts._prompt;
+        Entry1._prompte = _prompts._promptsList[0];
         
         
         _entries.Add(Entry1);

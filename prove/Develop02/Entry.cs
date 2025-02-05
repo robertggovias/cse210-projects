@@ -15,16 +15,16 @@ public class Entry{
         
     }
     public void Display(){
-        Console.WriteLine($"Date: {_date} - Prompt: {_prompts._prompt}\n{_entry}\n");
+        Console.WriteLine($"Date: {_date} - Prompt: {_prompts._promptsList[0]}\n{_entry}\n");
     
     }
     public void DisplayComma(){
-        Console.WriteLine($"Date: {_date} - Prompt: {_prompts._prompt},{_entry}\n");
+        Console.WriteLine($"Date: {_date} - Prompt: {_prompts._promptsList[0]},{_entry}\n");
 
     }
     public string GetEntry;
     public string GetEntryListBig(){
-        return String.Format($"Date: {_date} - Prompt: {_prompts._prompt},{_entry}\n");
+        return String.Format($"Date: {_date} - Prompt: {_prompts._promptsList[0]},{_entry}\n");
 
     }
         
