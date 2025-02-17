@@ -25,13 +25,20 @@ private List<Word> _wordys = new List<Word>{};
         }
     public string DisplayScriptureList(){ 
         string result = "";
+        int pepe = 0;
       foreach (Word word in _wordys){
-           result += word._word + " ";           
+        
+        if (word._word.Length > 5 ){
+            result += word._wordHidden;
+        }
+        else {
+        
+           result += word._word + " ";                      
       }
+      pepe++;}
         return result;
-    }
-    
-    
+   }
+       
     //private List<String> _words = new List<String>{};
     
 
