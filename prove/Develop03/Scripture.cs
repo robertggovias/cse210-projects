@@ -28,12 +28,12 @@ private List<Word> _wordys = new List<Word>{};
         int pepe = 0;
       foreach (Word word in _wordys){
         
-        if (word._word.Length > 5 ){
-            result += word._wordHidden;
+        if (word.GetWord().Length > 5 ){
+            result += word.GetUnderscore();
         }
         else {
         
-           result += word._word + " ";                      
+           result += word.GetWord() + " ";                      
       }
       pepe++;}
         return result;
@@ -45,8 +45,8 @@ private List<Word> _wordys = new List<Word>{};
     public string GetWordFromList(int index){
         string result2 = "";
         string result3 = "";
-        result2 = _wordys[index]._word;
-        result3 = _wordys[index]._wordHidden;
+        result2 = _wordys[index].GetWord();
+        result3 = _wordys[index].GetUnderscore();
 
         return result2 + result2.Length + result3;
     }

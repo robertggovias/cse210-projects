@@ -1,7 +1,7 @@
 class Word{
-    public string _word;
+    private string _word;
 
-    public string _wordHidden;
+    private string _wordHidden;
     public Word(string text){
         _word = text;
         GetUnderScoreVersionFromWord();
@@ -17,6 +17,10 @@ class Word{
         under = under + "_";
         }
         _wordHidden = under;        
+    }
+
+    public string GetUnderscore(){
+        return _wordHidden;
     }
     
 
