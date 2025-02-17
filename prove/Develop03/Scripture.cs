@@ -5,17 +5,16 @@ using System.Xml.XPath;
 
 class Scripture{
     private string _newScripture;
+    private List<Word> _wordys = new List<Word>{};
+    private int _indexOfHiddenWord = -1;
     public Scripture(string scripture){
         _newScripture = scripture;   
-        SeparateListAndAddToWordObject();
-             
+        SeparateListAndAddToWordObject();             
     }
+
     public string GetScripture(){
         return _newScripture;
     }    
-
-private List<Word> _wordys = new List<Word>{};
-    
     
     public void SeparateListAndAddToWordObject(){
         string[]_scriptureList = _newScripture.Split(' ');
@@ -23,25 +22,26 @@ private List<Word> _wordys = new List<Word>{};
             _wordys.Add(new Word(word));
         }
         }
+        public void HiddenWorddByIndex(int index){
+            if (index < 0 && index >= _wordys.Count){
+            _indexOfHiddenWord = index;}
+        }
     public string DisplayScriptureList(){ 
-        string result = "";
-        int pepe = 0;
-      foreach (Word word in _wordys){
-        
-        if (word.GetWord().Length > 5 ){
-            result += word.GetUnderscore();
+        string result = "";        
+      for (int id = 0; id < _wordys.Count; id++){        
+        if (id == _indexOfHiddenWord ){
+            result += _wordys[id].GetUnderscore() + " ";
         }
         else {
         
-           result += word.GetWord() + " ";                      
-      }
-      pepe++;}
-        return result;
-   }
-       
+           result += _wordys[id].GetWord() + " ";                      
+      }      
+     
+   }   return result;
+    }
     //private List<String> _words = new List<String>{};
     
-
+// this code is just to test if the list is of objects is created, if the undercore version is created, and f I can get the object acording with the index
     public string GetWordFromList(int index){
         string result2 = "";
         string result3 = "";

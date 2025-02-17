@@ -13,6 +13,7 @@ class Program
 
         Console.ReadLine();
         Console.Clear();
+        scriptureTest.HiddenWorddByIndex(5);
 
         Console.WriteLine(referenceTest.GetReference()+" "+ scriptureTest.DisplayScriptureList() + "funciono");
         Console.WriteLine(scriptureTest.GetWordFromList(3));
