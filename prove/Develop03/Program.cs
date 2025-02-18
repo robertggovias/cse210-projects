@@ -13,10 +13,12 @@ class Program
 
         Console.ReadLine();
         Console.Clear();
-        scriptureTest.HiddenWorddByIndex(5);
+        scriptureTest.HiddenWorddByIndex(scriptureTest._indexHiddenList[5]);
 
         Console.WriteLine(referenceTest.GetReference()+" "+ scriptureTest.DisplayScriptureList() + "funciono");
-        Console.WriteLine(scriptureTest.GetWordFromList(3));
+        Console.WriteLine(scriptureTest.GetHiddenIndex());
+        /* Console.WriteLine(scriptureTest.GetWordFromList(3)); */
+        Console.WriteLine(scriptureTest.ListaAleatoria());
         
         
         }
