@@ -3,102 +3,74 @@ using System.Runtime.Serialization.Formatters;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml.XPath;
 
-class Scripture{
-    private string _newScripture;
-    private List<Word> _wordys = new List<Word>{};
-    public int _indexOfHiddenWord = 5;
+class Scripture
+{
+    private List<Word> _words; /*  = new List<Word>{}; */
+    private List<int> _aleatoryList;
+    private int _curr_index = 0;
 
-    public List<int> _aleatoryList = new List<int>{};
-
-    public Scripture(string scripture){
-        _newScripture = scripture;   
-        SeparateListAndAddToWordObject();
-        CreateAleatoryList();             
-        RandomIndex();        
+    public Scripture(string scripture)
+    {
+        _words = scripture.Split(' ').Select(word => new Word(word)).ToList();
+        _aleatoryList = Enumerable.Range(0, _words.Count).ToList();
+        ShuffleList();
     }
 
-    public void CreateAleatoryList(){
-        //_aleatoryList = Enumerable.Range(0, _wordys.Count).ToList();
-        _aleatoryList = Enumerable.Range(0, _wordys.Count).ToList();
-        //_aleatoryList = Enumerable.Range(0, _wordys.Count)  // Genera todos los índices
-                             //.OrderBy(x => new Random().Next())  // Los desordena aleatoriamente
-          //                   .Take(_wordys.Count / 2)  // Toma la mitad
-            //                 .ToList();
+    public void setScripture(string scripture)
+    {
+        _words = scripture.Split(' ').Select(word => new Word(word)).ToList();
+        _aleatoryList = Enumerable.Range(0, _words.Count).ToList();
+        ShuffleList();
     }
 
-    public List<int> _hiddenWord_List_index = new List<int>();
-
-    public void CreateHiddenWordIndex(int i){        
-        _hiddenWord_List_index.Add(_aleatoryList[i]);   
+    public void ShuffleList()
+    {
+        Random rnd = new Random();
+        for (int i = _aleatoryList.Count - 1; i > 0; i--)
+        {
+            int j = rnd.Next(i + 1);
+            (_aleatoryList[i], _aleatoryList[j]) = (_aleatoryList[j], _aleatoryList[i]);
+        }
     }
 
-    public void RandomIndex(){
-        int finalIndex = _aleatoryList.Count()-1;
-        while(finalIndex > 0){
-            int temporalIndex = _aleatoryList[finalIndex];
-            int randomIndex = new Random().Next(0, finalIndex);
-            _aleatoryList[finalIndex] = _aleatoryList[randomIndex];
-            _aleatoryList[randomIndex] = temporalIndex;
-            finalIndex--;
-        }}        
-
-        public string ListaAleatoria(){
-            
-            return string.Join(",",_aleatoryList);
+    public void HideNextWord()
+    {
+        if (_curr_index < _words.Count)
+        {
+            int wordIndex = _aleatoryList[_curr_index];
+            _words[wordIndex].Hide();
+            _curr_index++;
         }
-
-        public string ListaIndexEsconder(){
-            
-            return string.Join(",",_hiddenWord_List_index);
-        }   
-        public void wordrestore(){
-            _hiddenWord_List_index.RemoveAt(_hiddenWord_List_index.Count-1);
-        }
-
-    public string GetScripture(){
-        return _newScripture;
-    }    
-    
-    public void SeparateListAndAddToWordObject(){
-        string[]_scriptureList = _newScripture.Split(' ');
-        foreach (string word in _scriptureList){
-            _wordys.Add(new Word(word));
-        }
-        }
-
-        
-public int Get_wordys_Count(){
-        return _wordys.Count;
-    }    
-
-    public string DisplayScriptureList(){          
-        string result = "";        
-      for (int id = 0; id < _wordys.Count; id++){        
-        if(_hiddenWord_List_index.Contains(id)){
-        //if (id == _indexOfHiddenWord ){       
-            result += _wordys[id].GetUnderscore() + " ";
-        }
-        else {
-        
-           result += _wordys[id].GetWord() + " ";                      
-      }      
-     
-   }   return result;
     }
-    //private List<String> _words = new List<String>{};
-    
-// this code is just to test if the list is of objects is created, if the undercore version is created, and f I can get the object acording with the index
-    public string GetWordFromList(int index){
-        string result2 = "";
-        string result3 = "";
-        result2 = _wordys[index].GetWord();
-        result3 = _wordys[index].GetUnderscore();
 
-        return result2 + result2.Length + result3;
+    public void restoreLastHiddenWord()
+    {
+        if (_curr_index > 0)
+        {
+            _curr_index--;
+            int wordIndex = _aleatoryList[_curr_index];
+            _words[wordIndex].Show();
+        }
     }
-    
-    
 
+    public string Display()
+    {
+        return string.Join(" ", _words.Select(word => word.Display()));
+    }
 
-    
+    public int GetCurrentIndex()
+    {
+        return _curr_index;
+    }
+
+    public int SetCurrentIndex(int index)
+    {
+        _curr_index = index;
+        return _curr_index;
+    }
+
+    public int GetWordCount()
+    {
+        return _words.Count;
+    }
 }
