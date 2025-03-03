@@ -1,21 +1,7 @@
 class ListingActivity : Activity
 {
-    private string _questionListing;
-    private string _answerListing;
-
-    public ListingActivity(
-        string activityName,
-        string activityDescription,
-        int activityDuration,
-        string questionListing,
-        string answerListing
-    )
-        : base(activityName, activityDescription, activityDuration)
-    {
-        _questionListing = questionListing;
-        _answerListing = answerListing;
-        //Console.WriteLine(_questionListing + _answerListing);
-    }
+    public ListingActivity(string activityName, string activityDescription, int activityDuration)
+        : base(activityName, activityDescription, activityDuration) { }
 
     private List<string> _questions = new List<string>
     {

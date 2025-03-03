@@ -1,22 +1,7 @@
 class ReflectingActivity : Activity
 {
-    private string _reflectionMesage;
-    private string _reflectionQuestion;
-    private List<Activity> _reflectionMessagesList;
-    private List<Activity> _reflectionQuestoinsList;
-
-    public ReflectingActivity(
-        string activityName,
-        string activityDescription,
-        int activityDuration,
-        string reflectionMessage,
-        string reflectionQuestion
-    )
-        : base(activityName, activityDescription, activityDuration)
-    {
-        _reflectionMesage = reflectionMessage;
-        _reflectionQuestion = reflectionQuestion;
-    }
+    public ReflectingActivity(string activityName, string activityDescription, int activityDuration)
+        : base(activityName, activityDescription, activityDuration) { }
 
     private List<string> _phrases = new List<string>
     {

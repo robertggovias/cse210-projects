@@ -184,7 +184,7 @@ class Activity
         Console.WriteLine(" 4.  How many activities did I completed so far?");
         Console.WriteLine(" 5.  How much time did you completed so far?");
         Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.WriteLine(" 5. Quit");
+        Console.WriteLine(" 6. Quit");
         Console.ForegroundColor = ConsoleColor.White;
     }
 
@@ -200,6 +200,4 @@ class Activity
             finalPrompt--;
         }
     }
-    
-   
 }

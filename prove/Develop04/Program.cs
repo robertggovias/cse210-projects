@@ -18,16 +18,12 @@ class Program
         ReflectingActivity reflectingActivity = new ReflectingActivity(
             "Reflection Activity",
             "reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.",
-            24,
-            "Piensa en el dia que te pegaste en el dedo pequeño",
-            "Pensaste en proferir alguna palabra profana?"
+            0
         );
         ListingActivity listing_Activity = new ListingActivity(
             "Listing Activity",
             "reflect on the good things in your life by having you list as many things as you can in a certain area.",
-            2434,
-            "Pregunta",
-            "respuesta"
+            0
         );
 
         int answer;
@@ -37,6 +33,10 @@ class Program
         do
         {
             activity.Menu();
+            //Stretch goal = This lists are shuffled at the beginign to garanteed that in the same session will not get the same prompt, at leasr the first 50 times, and he open a new session all the list are shiffled again, so should be a unique experience or at least 19600 times
+            listing_Activity.ShuflePhrases(listing_Activity.ListingQuestions());
+            reflectingActivity.ShuflePhrases(reflectingActivity.reflectionMessage());
+            reflectingActivity.ShuflePhrases(reflectingActivity.reflectionQuestion());
 
             answer = int.Parse(Console.ReadLine());
             switch (answer)
@@ -57,8 +57,7 @@ class Program
                     activitiesDuration = activitiesDuration + breathingActivity.getDuration();
                     break;
                 case 2:
-                    reflectingActivity.ShuflePhrases(reflectingActivity.reflectionMessage());
-                    reflectingActivity.ShuflePhrases(reflectingActivity.reflectionQuestion());
+
                     int i = 0;
                     reflectingActivity.Intro();
                     Console.WriteLine(
@@ -89,7 +88,7 @@ class Program
 
                 case 3:
                     listing_Activity.Intro();
-                    listing_Activity.ShuflePhrases(listing_Activity.ListingQuestions());
+
                     int z = 0;
                     Console.WriteLine(
                         $"List as many responses you can to the following prompt: \n---{listing_Activity.getListElem(listing_Activity.ListingQuestions(), z)}---"
@@ -110,7 +109,7 @@ class Program
                     activitiesDone++;
                     activitiesDuration = activitiesDuration + listing_Activity.getDuration();
                     break;
-                case 4://This stretch goal is for Keeping a log of how many times activities were performed
+                case 4: //This stretch goal is for Keeping a log of how many times activities were performed
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"\n\n You have completed {activitiesDone} activity so far");
@@ -118,7 +117,7 @@ class Program
                     Console.ForegroundColor = ConsoleColor.White;
                     break;
 
-                case 5://This stretch goal is for Keeping a log of how much time were performed
+                case 5: //This stretch goal is for Keeping a log of how much time was performed
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine(
@@ -128,6 +127,6 @@ class Program
                     Console.ForegroundColor = ConsoleColor.White;
                     break;
             }
-        } while (answer != 5);
+        } while (answer != 6);
     }
 }
