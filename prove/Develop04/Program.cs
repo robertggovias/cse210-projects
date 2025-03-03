@@ -31,23 +31,30 @@ class Program
         );
 
         int answer;
+        int activitiesDone = 0;
+        int activitiesDuration = 0;
 
         do
         {
             activity.Menu();
+
             answer = int.Parse(Console.ReadLine());
             switch (answer)
             {
                 case 1:
                     breathingActivity.Intro();
                     breathingActivity.setEndTime(breathingActivity.getDuration());
-
                     while (DateTime.Now < breathingActivity.getEndTime())
                     {
-                        breathingActivity.Breathing(breathingActivity.GetInhalationMessage(), 3);
-                        breathingActivity.Breathing(breathingActivity.GetExahalationMessage(), 3);
+                        breathingActivity.Breathing(breathingActivity.GetInhalationMessage());
+                        breathingActivity.BarAnimationInhalate();
+                        breathingActivity.Breathing(breathingActivity.GetExahalationMessage());
+                        breathingActivity.BarAnimationExhalate();
                     }
                     breathingActivity.EndActivity(5);
+
+                    activitiesDone++;
+                    activitiesDuration = activitiesDuration + breathingActivity.getDuration();
                     break;
                 case 2:
                     reflectingActivity.ShuflePhrases(reflectingActivity.reflectionMessage());
@@ -64,6 +71,7 @@ class Program
                     Console.WriteLine("You may begin in: ");
                     reflectingActivity.CountDown(5);
                     reflectingActivity.setEndTime(reflectingActivity.getDuration());
+
                     while (DateTime.Now < reflectingActivity.getEndTime())
                     {
                         Console.Write(
@@ -74,6 +82,9 @@ class Program
                         i++;
                     }
                     reflectingActivity.EndActivity(5);
+                    activitiesDone++;
+                    activitiesDuration = activitiesDuration + reflectingActivity.getDuration();
+
                     break;
 
                 case 3:
@@ -86,24 +97,37 @@ class Program
                     Console.WriteLine("You may begin in: ");
                     reflectingActivity.CountDown(5);
                     listing_Activity.setEndTime(listing_Activity.getDuration());
+
                     while (DateTime.Now < listing_Activity.getEndTime())
                     {
                         Console.Write("> ");
                         string _answer = Console.ReadLine();
-                       listing_Activity.AddListingAnswers(_answer);                                                
+                        listing_Activity.AddListingAnswers(_answer);
                     }
                     Console.WriteLine($"You listed {listing_Activity.ListingAnswers().Count}");
                     listing_Activity.EndActivity(5);
+
+                    activitiesDone++;
+                    activitiesDuration = activitiesDuration + listing_Activity.getDuration();
+                    break;
+                case 4://This stretch goal is for Keeping a log of how many times activities were performed
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"\n\n You have completed {activitiesDone} activity so far");
+                    Console.ReadLine();
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
+
+                case 5://This stretch goal is for Keeping a log of how much time were performed
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine(
+                        $"\n\n You have completed {activitiesDuration} seconds so far"
+                    );
+                    Console.ReadLine();
+                    Console.ForegroundColor = ConsoleColor.White;
                     break;
             }
-        } while (answer != 4);
-
-        //reflectingActivity.EndActivity();
-        /*    breathingActivity.EndActivity();
-           listing_Activity.EndActivity();
-           reflectingActivity.Spinner(10);
-           
-           reflectingActivity.CountDown(5);
-           reflectingActivity.CountingTimeTest(4); */
+        } while (answer != 5);
     }
 }

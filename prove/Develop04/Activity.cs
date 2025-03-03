@@ -8,7 +8,6 @@ class Activity
     private int _activityDuration;
     private List<int> _aleatoryList;
 
-
     private DateTime _activityEndTime;
     public List<string> _group;
 
@@ -181,12 +180,15 @@ class Activity
         Console.WriteLine(
             " 1. Start breathing activity \n 2. Start reflecting activity \n 3. Start listing activity"
         );
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine(" 4.  How many activities did I completed so far?");
+        Console.WriteLine(" 5.  How much time did you completed so far?");
         Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.WriteLine(" 4. Quit");
+        Console.WriteLine(" 5. Quit");
         Console.ForegroundColor = ConsoleColor.White;
     }
 
-    public void ShuflePhrases(List <string>listToShufle)
+    public void ShuflePhrases(List<string> listToShufle)
     {
         int finalPrompt = listToShufle.Count() - 1;
         while (finalPrompt > 0)
@@ -198,7 +200,6 @@ class Activity
             finalPrompt--;
         }
     }
-    /*     public void DisplayList(){
-            Console.WriteLine(string.Join(", ", _phrases));
-            } */
+    
+   
 }

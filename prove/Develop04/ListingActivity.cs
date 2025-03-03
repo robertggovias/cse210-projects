@@ -3,8 +3,6 @@ class ListingActivity : Activity
     private string _questionListing;
     private string _answerListing;
 
-    private List<string> _answers;
-
     public ListingActivity(
         string activityName,
         string activityDescription,
@@ -75,17 +73,25 @@ class ListingActivity : Activity
         " What are some things that remind you of your worth?",
         " What are some things you appreciate about today?",
     };
-    private List<string> answers = new List<string>{};
-    public List<string> ListingQuestions(){
+    private List<string> _answers = new List<string> { };
+
+    public List<string> ListingQuestions()
+    {
         return _questions;
     }
-    public List<string> ListingAnswers(){
+
+    public List<string> ListingAnswers()
+    {
         return _answers;
     }
-    public void AddListingAnswers(string element){
+
+    public void AddListingAnswers(string element)
+    {
         _answers.Add(element);
     }
-    public string getListElem(List<string> listing, int element){
+
+    public string getListElem(List<string> listing, int element)
+    {
         return listing[element];
     }
 }

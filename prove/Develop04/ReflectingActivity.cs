@@ -140,5 +140,5 @@ class ReflectingActivity : Activity
     public string getListElem(List<string> reflect, int element)
     {
         return reflect[element];
-    }       
+    }
 }
