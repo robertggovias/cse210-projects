@@ -4,6 +4,9 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Foundation2 World!");
+         public void Menu() 
+    {
+        // Implementación del menú
+    }
     }
 }

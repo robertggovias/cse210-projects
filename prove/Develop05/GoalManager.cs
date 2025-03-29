@@ -1,24 +1,22 @@
-class GoalManager
-{
-    public Goal goal = new Goal();
+class GoalManager{
+    public List<Goal> _goalList = new List<Goal>();
+
+   /*  public Goal goal = new Goal();
 
     public int SumTotalPoints()
     {
         goal.SetPoints(45);
         return goal.getPoints();
-    }
-
-    private List<Goal> _goalList;
+    } */
+    
 
     public GoalManager()
     {
         
     }
 
-    public void AddGoalToList(Goal goal)
-    {
-        
-    }
+    
+    
 
     public void DisplayPoints() { }
 

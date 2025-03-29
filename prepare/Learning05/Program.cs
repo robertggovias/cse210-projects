@@ -4,22 +4,20 @@ class Program
 {
     static void Main(string[] args)
     {
-        Square squareA = new Square( "red",45);
-        Console.WriteLine(
-            $"I'm a {squareA.GetColor()} square with a side of {squareA._side} an area of {squareA.GetArea()}"
-        );
-        Rectangle rectangleA = new Rectangle("gray",10, 5);
-        Circle circleA = new Circle("Blue",10);
-        Console.WriteLine(
-            $"I'm a {rectangleA.GetColor()} rectangle with a long side of {rectangleA._lengtLongSide} and a short side of {rectangleA._lengthShortSide} an area of {rectangleA.GetArea()}"
-        );
-        Console.WriteLine(
-            $"I'm a {rectangleA.GetColor()} {rectangleA.GetShape()} and I have {rectangleA.Description()} and my area is {rectangleA.GetArea()}"
-        );
-
-        Console.WriteLine(
-            $"I'm a {circleA.GetColor()} {circleA.GetShape()} and I have {circleA.Description()} and my area is {circleA.GetArea()}"
-        );
+        Shape squareA = new Square("red", 45);
+        //Console.WriteLine($"I'm a {squareA.GetColor()} square with a side of {squareA._side} an area of {squareA.GetArea()}");
+        Shape rectangleA = new Rectangle("gray", 10, 5);
+        Shape circleA = new Circle("Blue", 10);
+        /*         Console.WriteLine(
+                    $"I'm a {rectangleA.GetColor()} rectangle with a long side of {rectangleA._lengtLongSide} and a short side of {rectangleA._lengthShortSide} an area of {rectangleA.GetArea()}"
+                );
+                Console.WriteLine(
+                    $"I'm a {rectangleA.GetColor()} {rectangleA.GetShape()} and I have {rectangleA.Description()} and my area is {rectangleA.GetArea()}"
+                );
+        
+                Console.WriteLine(
+                    $"I'm a {circleA.GetColor()} {circleA.GetShape()} and I have {circleA.Description()} and my area is {circleA.GetArea()}"
+                ); */
 
         List<Shape> listA = new List<Shape>();
         listA = [circleA, squareA, rectangleA];
