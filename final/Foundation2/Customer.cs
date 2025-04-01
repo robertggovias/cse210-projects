@@ -9,14 +9,29 @@ public class Customer
         _address = address;
     }
 
-    public Customer GetCustomerDetails() 
+    public Customer GetCustomerDetails()
     {
         // Implementación para obtener los detalles del cliente
         return this; // Devolver detalles del cliente actual
     }
 
-    public bool CustomerLiveUSA() 
+    public string GetCustomerName()
     {
-        return _address.AddressFromUSA(); // Verificar si el cliente vive en USA
+        return _name;
+    }
+
+    public string CustomerDetailForLabel()
+    {
+        return $"Shipping Label\n Name: {_name}\n Address:\n{_address.GetAddressDetails()}";
+    }
+
+    public string CustomerDetailForOrder()
+    {
+        return $"Customer Details\n Name: {_name}\n Shipping Address:\n{_address.GetAddressDetails()}\n";
+    }
+
+    public bool CustomerLiveUSA()
+    {
+        return _address.GetIfUSA();
     }
 }

@@ -1,11 +1,11 @@
 public class Product
 {
     private string _name;
-    private int _productID;
-    private int _pricePerUnit;
+    private string _productID;
+    private double _pricePerUnit;
     private int _quantityProducts;
 
-    public Product(string name, int productID, int pricePerUnit, int quantityProducts)
+    public Product(string name, string productID, double pricePerUnit, int quantityProducts)
     {
         _name = name;
         _productID = productID;
@@ -13,13 +13,12 @@ public class Product
         _quantityProducts = quantityProducts;
     }
 
-    public Product GetProductDetails() 
+    public string OneProductDetailsOnLabel()
     {
-        // Implementación para obtener los detalles del producto
-        return this; // Devolver detalles del producto actual
+        return $"   - {_name} ({_productID})";
     }
 
-    public int TotalCostProducts() 
+    public double TotalCostProducts()
     {
         // Implementación para calcular el costo total de los productos
         return _pricePerUnit * _quantityProducts; // Devolver costo total calculado

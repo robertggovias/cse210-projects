@@ -1,46 +1,103 @@
+using System.Security.Cryptography.X509Certificates;
+
 public class Order
 {
     private List<Product> _listProduct;
-    private List<Customer> _listCustomer;
-    private int _shippingCostInUSA;
-    private int _shippingCostOutUSA;
 
-    public Order(List<Product> listProduct, List<Customer> listCustomer)
+    private int _shippingCostInUSA = 5;
+    private int _shippingCostOutUSA = 35;
+
+    private Customer _customer;
+    private Product _product;
+
+    public string ShippingLabel()
+    {
+        return _customer.CustomerDetailForLabel();
+    }
+
+    public string CustomerDetails()
+    {
+        return _customer.CustomerDetailForOrder();
+    }
+
+    public void PackingLabel()
+    {
+        Console.WriteLine("Packing Label:");
+        foreach (Product product in _listProduct)
+        {
+            Console.WriteLine(product.OneProductDetailsOnLabel());
+        }
+    }
+
+    public Order(List<Product> listProduct, Customer customer)
     {
         _listProduct = listProduct;
-        _listCustomer = listCustomer;
+        _customer = customer;
     }
 
-    public void SetShippingCostsInOut() 
+    public void AddNewProduct(Product product)
     {
-        // Implementación para establecer los costos de envío dentro y fuera de USA
+        _listProduct.Add(product);
     }
 
-    public int ProductsCostTotal() 
+    public void SetShippingCostsInUSA(int price)
     {
+        _shippingCostInUSA = price;
+    }
+
+    public void SetShippingCostsOutUSA(int price)
+    {
+        _shippingCostOutUSA = price;
+    }
+
+    public double ProductsCostTotal()
+    {
+        double productCostTotal = 0;
+        foreach (Product product in _listProduct)
+        {
+            productCostTotal += product.TotalCostProducts();
+        }
+        return productCostTotal;
         // Implementación para obtener el costo total de los productos
         return 0; // Devolver el total calculado
     }
 
-    public int ShippingCost() 
+    public int ShippingCost()
     {
+        int shippingCost;
+        if (_customer.CustomerLiveUSA() == true)
+        {
+            shippingCost = _shippingCostInUSA;
+        }
+        else
+        {
+            shippingCost = _shippingCostOutUSA;
+        }
+
         // Implementación para obtener el costo de envío
-        return 0; // Devolver costo de envío calculado
+        return shippingCost; // Devolver costo de envío calculado
     }
 
-    public int TotalCostOrder() 
+    public double TotalCostOrder()
     {
+        ShippingCost();
+        return ShippingCost() + ProductsCostTotal();
         // Implementación para calcular el costo total del pedido
         return 0; // Devolver costo total calculado
     }
 
-    public void PackingLabel() 
+    public void OrderComplete()
     {
-        // Implementación para generar la etiqueta de embalaje
-    }
-
-    public void ShippingLabel() 
-    {
-        // Implementación para generar la etiqueta de envío
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine(CustomerDetails());
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        PackingLabel();
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine($"\n{ShippingLabel()}");
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine(
+            $"\n\nOrder Total: ${TotalCostOrder()}\n(Product Total: ${ProductsCostTotal()} + Shipping: ${ShippingCost()})\n"
+        );
+        Console.ForegroundColor = ConsoleColor.White;
     }
 }
