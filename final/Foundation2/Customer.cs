@@ -9,12 +9,6 @@ public class Customer
         _address = address;
     }
 
-    public Customer GetCustomerDetails()
-    {
-        // Implementación para obtener los detalles del cliente
-        return this; // Devolver detalles del cliente actual
-    }
-
     public string GetCustomerName()
     {
         return _name;

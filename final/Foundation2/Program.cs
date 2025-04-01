@@ -43,11 +43,11 @@ class Program
                 i++;
                 Console.WriteLine($"Order #{i}");
                 order.OrderComplete();
-                Console.WriteLine("\n-----------------------------------------\n\n");
+                Console.WriteLine("\n----------------------------------\n\n");
             }
         }
         PrintOrders();
 
-        // Implementación del menú
+        
     }
 }

@@ -20,7 +20,7 @@ public class Product
 
     public double TotalCostProducts()
     {
-        // Implementación para calcular el costo total de los productos
-        return _pricePerUnit * _quantityProducts; // Devolver costo total calculado
+        // Calculate the total cost of the products
+        return _pricePerUnit * _quantityProducts;
     }
 }
