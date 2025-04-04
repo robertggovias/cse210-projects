@@ -57,9 +57,7 @@ public class Order
         {
             productCostTotal += product.TotalCostProducts();
         }
-        return productCostTotal;
-        // Implementación para obtener el costo total de los productos
-        return 0; // Devolver el total calculado
+        return productCostTotal;        
     }
 
     public int ShippingCost()
@@ -72,18 +70,14 @@ public class Order
         else
         {
             shippingCost = _shippingCostOutUSA;
-        }
-
-        // Implementación para obtener el costo de envío
-        return shippingCost; // Devolver costo de envío calculado
+        }        
+        return shippingCost;
     }
 
     public double TotalCostOrder()
     {
         ShippingCost();
         return ShippingCost() + ProductsCostTotal();
-        // Implementación para calcular el costo total del pedido
-        return 0; // Devolver costo total calculado
     }
 
     public void OrderComplete()

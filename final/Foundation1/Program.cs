@@ -7,52 +7,85 @@ class Program
     static void Main(string[] args)
     {
         List<Videos> _videosList = [];
-        _videosList.Add(new Videos(
+        _videosList.Add(
+            new Videos(
                 "I Didn’t Feel Good Enough, But I Was Good Enough for God | His Grace",
                 "The Church of Jesus Christ of Latter-day Saints",
-                308,[]));
-        _videosList.Add(new Videos(
+                308,
+                []
+            )
+        );
+        _videosList.Add(
+            new Videos(
                 "Inspiring Short: The Miracle of the Ordinary",
-                "Lawrence E. Corbridge",180,[]));        
-        _videosList.Add(new Videos(
-                "Inspiring Short: It's Never Too Late", "Matthew Wickman", 240, []));
+                "Lawrence E. Corbridge",
+                180,
+                []
+            )
+        );
+        _videosList.Add(
+            new Videos("Inspiring Short: It's Never Too Late", "Matthew Wickman", 240, [])
+        );
 
-        _videosList[0].AddCommentToVideo(new Comments(
-                "@drewcano7865", "I had a very similar experience"));
-        _videosList[0].AddCommentToVideo(new Comments(
+        _videosList[0]
+            .AddCommentToVideo(new Comments("@drewcano7865", "I had a very similar experience"));
+        _videosList[0]
+            .AddCommentToVideo(
+                new Comments(
                     "@matthewhart5573",
-                    "Whoever reading this Heavenly Father loves you so much!"));
-        _videosList[0].AddCommentToVideo(new Comments(
+                    "Whoever reading this Heavenly Father loves you so much!"
+                )
+            );
+        _videosList[0]
+            .AddCommentToVideo(
+                new Comments(
                     "@jacobbrown2015",
                     "Through His Grace, we can trade perfection for progression. Thank you for telling your story!"
-                ));
-        _videosList[0].AddCommentToVideo(new Comments(
+                )
+            );
+        _videosList[0]
+            .AddCommentToVideo(
+                new Comments(
                     "@dwyanewade8645",
-                    "Love the fact that because God loves us,  we are infinitely good enough 🙏 We are going to be okay fellas."));
+                    "Love the fact that because God loves us,  we are infinitely good enough 🙏 We are going to be okay fellas."
+                )
+            );
 
-        _videosList[1].AddCommentToVideo(new Comments(
+        _videosList[1]
+            .AddCommentToVideo(
+                new Comments(
                     "@jacobadamsbaseball",
-                    "I remember having similar feelings as a young man just looking at our dog in the back yard sitting there. Beautiful!"));
-        _videosList[1].AddCommentToVideo(new Comments(
+                    "I remember having similar feelings as a young man just looking at our dog in the back yard sitting there. Beautiful!"
+                )
+            );
+        _videosList[1]
+            .AddCommentToVideo(
+                new Comments(
                     "@pacard33",
-                    "I love Lawrence Corbridge. He has been one of the most inspiring speakers the Church has had.  What a great man and an even greater testimony."));
-        _videosList[1].AddCommentToVideo(new Comments(
-                    "@maryfranjeppesen8932",
-                    "Love love love this!!"));
-        _videosList[1].AddCommentToVideo(new Comments(
-                    "@deegrappendorf5300",
-                    "Such a beautiful message!"));
-        _videosList[1].AddCommentToVideo(new Comments(
-                    "@danielmaluenda9731",
-                    "This really is extraordinary"));
+                    "I love Lawrence Corbridge. He has been one of the most inspiring speakers the Church has had.  What a great man and an even greater testimony."
+                )
+            );
+        _videosList[1]
+            .AddCommentToVideo(new Comments("@maryfranjeppesen8932", "Love love love this!!"));
+        _videosList[1]
+            .AddCommentToVideo(new Comments("@deegrappendorf5300", "Such a beautiful message!"));
+        _videosList[1]
+            .AddCommentToVideo(new Comments("@danielmaluenda9731", "This really is extraordinary"));
 
-        _videosList[2].AddCommentToVideo(new Comments(
+        _videosList[2]
+            .AddCommentToVideo(
+                new Comments(
                     "@intigniadickey2224",
-                    "I like how the film was able to capture the beauty of this man's story   : )"));
-        _videosList[2].AddCommentToVideo(new Comments(
+                    "I like how the film was able to capture the beauty of this man's story   : )"
+                )
+            );
+        _videosList[2]
+            .AddCommentToVideo(
+                new Comments(
                     "@joelgriffitts1385",
-                    "The gospel of second chances. And third and fourth and on and on. I'm counting on it."));
-
+                    "The gospel of second chances. And third and fourth and on and on. I'm counting on it."
+                )
+            );
 
         //My mind goes automaticly to create menu, sorry
         int chossenElection = 0;
@@ -77,7 +110,7 @@ class Program
                     break;
                 case 3:
                     Console.Clear();
-                    DisplayVideoList();                    
+                    DisplayVideoList();
                     Console.WriteLine("Press enter to continue");
                     Console.ReadLine();
                     break;
@@ -153,7 +186,9 @@ class Program
             );
             int i = int.Parse(Console.ReadLine()) - 1;
             Console.Clear();
-            Console.WriteLine($"The comments for the video {_videosList[i].GetVideoTitle()} are:\n");
+            Console.WriteLine(
+                $"The comments for the video {_videosList[i].GetVideoTitle()} are:\n"
+            );
             _videosList[i].DisplayAllCommentsFromOneVideo();
         }
     }
