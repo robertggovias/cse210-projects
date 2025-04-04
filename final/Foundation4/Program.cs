@@ -6,14 +6,30 @@ class Program
     {
         List<Activity> activities = new List<Activity>();
 
-        Cycling cycling = new Cycling(new DateTime(2025, 5, 5), 60, 1);
-        Running running = new Running(new DateTime(2025, 5, 5), 60, 1);
-        Swimming swimming = new Swimming(new DateTime(2025, 5, 5), 60, 20);
-        Console.WriteLine(swimming._numberLaps);
+        Cycling cyclingLikeRookie = new Cycling(new DateTime(2025, 5, 5), 90, 25);
+        Cycling cyclingLikePro = new Cycling(new DateTime(2025, 5, 6), 120, 30);
+        Cycling cyclingLikeOlimpic = new Cycling(new DateTime(2025, 5, 7), 60, 56.792);
 
-        activities.Add(cycling);
-        activities.Add(running);        
-        activities.Add(swimming);
+        Running runningLikeRookie = new Running(new DateTime(2025, 6, 8), 30, 5000);
+        Running runningLikePro = new Running(new DateTime(2025, 6, 9), 50, 10000);
+        Running runningLikeOlimpic = new Running(new DateTime(2025, 6, 10), 120, 42195);
+
+        Swimming swimmingLikeRookie = new Swimming(new DateTime(2025, 7, 11), 15, 10);
+        Swimming swimmingLikePro = new Swimming(new DateTime(2025, 7, 12), 20, 20);
+        Swimming swimmingLikeOlimpic = new Swimming(new DateTime(2025, 7, 13), 15, 30);
+
+        activities =
+        [
+            cyclingLikeRookie,
+            cyclingLikePro,
+            cyclingLikeOlimpic,
+            runningLikeRookie,
+            runningLikePro,
+            runningLikeOlimpic,
+            swimmingLikeRookie,
+            swimmingLikePro,
+            swimmingLikeOlimpic,
+        ];
 
         foreach (Activity activity in activities)
         {

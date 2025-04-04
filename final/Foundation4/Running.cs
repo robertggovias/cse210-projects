@@ -15,6 +15,6 @@ class Running : Activity
 
     public override double GetDistance()
     {
-        return _distanceMeters/1000;        
+        return _distanceMeters / 1000;
     }
 }

@@ -1,17 +1,16 @@
 abstract class Activity
 {
     protected DateTime _date;
-    protected int _timeMinutes;
+    protected double _timeMinutes;
     private double _hours;
     protected string _typeActivity;
 
-    public Activity(DateTime date, int timeMinutes, string typeActivity)
+    public Activity(DateTime date, double timeMinutes, string typeActivity)
     {
         _date = date;
         _timeMinutes = timeMinutes;
         _hours = timeMinutes / 60;
         _typeActivity = typeActivity;
-        
     }
 
     public double GetHours()
@@ -28,12 +27,12 @@ abstract class Activity
 
     public virtual double GetPace()
     {
-        return Math.Round(_timeMinutes / GetDistance(),2);
+        return _timeMinutes / GetDistance();
         ;
     }
 
     public string GetSummary()
     {
-        return $"\n- {_date.Date.ToString("dd, MMMM yyyy")} {_typeActivity} ({_timeMinutes} min): Distance {GetDistance()} km ({GetDistance()*1000} m), Speed {GetSpeed()} km/h, Pace {GetPace()} min per km";
+        return $"- {_date.Date.ToString("dd, MMMM yyyy")} {_typeActivity} ({_timeMinutes} min): Distance {Math.Round(GetDistance(), 4).ToString("G")} km ({Math.Round(GetDistance() * 1000, 1).ToString("G")} m), Speed {Math.Round(GetSpeed(), 4).ToString("G")} km/h, Pace {Math.Round(GetPace(), 4).ToString("G")} min per km";
     }
 }
