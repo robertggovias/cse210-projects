@@ -1,0 +1,8 @@
+Simple Goal|10|Daily Couple Prayer|Pray with my spouse every morning and night.|False|10
+Simple Goal|10|Morning Scriptures|Read scriptures for 10 minutes before starting work.|False|10
+Eternal Goal|50|Temple Attendance|Attend the temple twice a month with my wife.|False|50
+Eternal Goal|50|Magnify My Calling|Serve diligently and prepare lessons for my quorum.|False|50
+Checklist Goal|25|BYU Coding Projects|Finish and review weekly projects from BYU Pathway.|False|100|2|4|50
+Checklist Goal|25|Family Home Evening|Hold FHE weekly with spiritual lessons and games.|False|100|3|4|50
+Bad Habit|5|Netflix|Watching Netflix during study hours.|False|5
+Bad Habit|5|Check Email|Check email more than twice a day.|False|5
